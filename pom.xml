@@ -12,7 +12,7 @@
 	<artifactId>SpringRestMongo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringRestMongo</name>
-	<description>Demo project for Spring Boot wiwth mongodb</description>
+	<description>Demo project for Spring Boot with mongodb</description>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -60,15 +60,7 @@
 						</exclude>
 					</excludes>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>16</source>
-					<target>16</target>
-				</configuration>
-			</plugin>
+			</plugin><plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><configuration><source>8</source><target>8</target></configuration></plugin>
 		</plugins>
 	</build>
 </project>

@@ -30,6 +30,7 @@ public class UserResource {
 
     }
 
+
     @GetMapping("{id}")   //  demanem un en concret               #  localhost:8081/u/1
     public UserDTO getUser(@PathVariable("id") Integer id) {
 
@@ -43,11 +44,18 @@ public class UserResource {
 
     }
 
+
     @PostMapping("/users")    // afegim un element
     public UserDTO addUser(@RequestBody UserDTO user) {
         userController.addUser(user);
         return user;
     }
+
+    @PostMapping("{id}")    // afegim un element
+    public void addTicket(@PathVariable Integer id,@RequestBody TicketDTO ticket) {
+        userController.addTicket(ticket,id);
+    }
+
 
     @DeleteMapping("{id}")      // esborrem un element concret
     public void deleteUser(@PathVariable("id") Integer id) {

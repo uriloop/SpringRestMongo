@@ -9,12 +9,14 @@ import com.github.fge.jsonpatch.JsonPatchException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 public class UserController {
 
     UserDAO userDAO;
@@ -26,7 +28,11 @@ public class UserController {
 
     public List<UserDTO> getUsers() {
 
-        List<UserDTO> usersDTO=userDAO.findAll().stream().map(UserDTO::new).toList();
+        List<UserDTO> usersDTO = new ArrayList<>();
+        for (User user : userDAO.findAll()) {
+            UserDTO userDTO = new UserDTO(user);
+            usersDTO.add(userDTO);
+        }
 
         return usersDTO;
 
@@ -84,6 +90,18 @@ public class UserController {
 
         JsonNode patched = patch.apply(objectMapper.convertValue(user, JsonNode.class));
         return objectMapper.treeToValue(patched, User.class);
+    }
+
+    public void addTicket(TicketDTO ticket, Integer id) {
+        Optional<User> u = userDAO.findById(id);
+
+        if (u.isPresent()) {
+            User us = u.get();
+            us.getTickets().add(new Ticket(ticket));
+            userDAO.save(us);
+        }
+
+
     }
 }
 
