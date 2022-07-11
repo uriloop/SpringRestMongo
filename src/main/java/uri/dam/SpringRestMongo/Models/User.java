@@ -1,9 +1,11 @@
-package uri.dam.SpringRestMongo;
+package uri.dam.SpringRestMongo.Models;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import uri.dam.SpringRestMongo.DTOs.UserDTO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,11 +14,12 @@ import java.util.List;
 public class User {
 
     @Id
+    //@GeneratedValue(strategy=GenerationType.AUTO) // automatically generated primary key.
     private int id;
     private String email;
     private String password;
     private String full_name;
-    private List<Ticket> tickets;
+    private List<Ticket> tickets = new ArrayList<>();
 
 
     public User() {

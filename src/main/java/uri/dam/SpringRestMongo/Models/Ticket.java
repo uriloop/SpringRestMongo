@@ -1,9 +1,10 @@
-package uri.dam.SpringRestMongo;
+package uri.dam.SpringRestMongo.Models;
 
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import uri.dam.SpringRestMongo.DTOs.TicketDTO;
 
 @Data
 @Document(collection = "tickets")

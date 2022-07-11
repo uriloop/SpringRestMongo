@@ -1,4 +1,4 @@
-package uri.dam.SpringRestMongo;
+package uri.dam.SpringRestMongo.Controllers;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -8,9 +8,12 @@ import com.github.fge.jsonpatch.JsonPatch;
 import com.github.fge.jsonpatch.JsonPatchException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
+import uri.dam.SpringRestMongo.DAOs.UserDAO;
+import uri.dam.SpringRestMongo.DTOs.TicketDTO;
+import uri.dam.SpringRestMongo.DTOs.UserDTO;
+import uri.dam.SpringRestMongo.Models.Ticket;
+import uri.dam.SpringRestMongo.Models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,14 +68,16 @@ public class UserController {
         Optional<User> u = userDAO.findById(id);
 
         User user= new User(userDTO);
-
         if (u.isPresent()) {
             User us = u.get();
             us.setEmail(user.getEmail());
             us.setPassword(user.getPassword());
             us.setFull_name(user.getFull_name());
             userDAO.save(us);
+
         }
+
+
     }
 
     public void updateUser(User userPatched) {

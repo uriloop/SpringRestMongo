@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/Css/mystyle.css">
+    <title>Cinema a la fresca</title>
+</head>
+<body>
+    <h1>Benvingut al cinema a la fresca!</h1>
+<p> En aquesta web podrás veure les propximes sessions de Cinema a la Fresca amb les pelicules y entrades disponibles. <br> No oblidis registrar-te per a poder "comprar" les entrades.</p>
+<h2> Proximes sessions:</h2>
+    <table>
+        <tr>
+            <td>Película</td>
+            <td>Dia</td>
+            <td>Hora</td>
+        </tr>
+        <tr th:each="s : ${sessions}">
+            <td th:text="${s.pelicula}" />
+            <td th:text="${s.dia}" />
+            <td th:text="${s.hora}" />
+            <td><a th:href="@{/pelicula/{id}(id=${s.id})}" target="_self">Comprar tickets</a></td>
+
+        </tr>
+    </table>
+
+
+</body>
+</html>

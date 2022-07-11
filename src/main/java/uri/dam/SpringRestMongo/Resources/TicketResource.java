@@ -1,8 +1,10 @@
-package uri.dam.SpringRestMongo;
+package uri.dam.SpringRestMongo.Resources;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import uri.dam.SpringRestMongo.Controllers.TicketController;
+import uri.dam.SpringRestMongo.DTOs.TicketDTO;
 
 import java.util.List;
 
@@ -31,6 +33,10 @@ public class TicketResource {
         return ticket;
     }
 
+    @DeleteMapping("{id}")
+    public void deleteTicket(@PathVariable("id") Integer id){
+        ticketController.deleteTicket(id);
+    }
 
 
 }

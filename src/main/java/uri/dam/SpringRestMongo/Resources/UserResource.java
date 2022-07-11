@@ -1,12 +1,14 @@
-package uri.dam.SpringRestMongo;
+package uri.dam.SpringRestMongo.Resources;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.fge.jsonpatch.JsonPatch;
 import com.github.fge.jsonpatch.JsonPatchException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import uri.dam.SpringRestMongo.Controllers.UserController;
+import uri.dam.SpringRestMongo.DTOs.TicketDTO;
+import uri.dam.SpringRestMongo.DTOs.UserDTO;
 
 import java.util.Collections;
 import java.util.List;
@@ -45,27 +47,29 @@ public class UserResource {
     }
 
 
-    @PostMapping("/users")    // afegim un element
+    @PostMapping("/users")    // afegim un usuari
     public UserDTO addUser(@RequestBody UserDTO user) {
         userController.addUser(user);
         return user;
     }
 
-    @PostMapping("{id}")    // afegim un element
-    public void addTicket(@PathVariable Integer id,@RequestBody TicketDTO ticket) {
-        userController.addTicket(ticket,id);
-    }
 
-
-    @DeleteMapping("{id}")      // esborrem un element concret
+    @DeleteMapping("{id}")      // esborrem un usuari concret
     public void deleteUser(@PathVariable("id") Integer id) {
         userController.deleteUser(id);
 
     }
 
-    @PutMapping("{id}")         // actualitzem els atributs d'un element concret
+    @PutMapping("{id}")         // actualitzem els atributs d'un usuari concret
     public void updateUser(@PathVariable("id") Integer id, @RequestBody UserDTO user) {
         userController.updateUser(id, user);
+    }
+
+
+    @PostMapping("{id}")       // afegim un ticket a un usuari
+    public void addTicket(@PathVariable("id") Integer id, @RequestBody TicketDTO ticket) {
+        userController.addTicket(ticket,id);
+
     }
 
 

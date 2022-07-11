@@ -1,7 +1,10 @@
-package uri.dam.SpringRestMongo;
+package uri.dam.SpringRestMongo.DTOs;
 
 import lombok.Data;
+import uri.dam.SpringRestMongo.Models.Ticket;
+import uri.dam.SpringRestMongo.Models.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -11,7 +14,7 @@ public class UserDTO {
     private String email;
     private String full_name;
     private String passwd;
-    private List<Ticket> tickets;
+    private List<Ticket> tickets = new ArrayList<>();
 
     public UserDTO() {
     }
@@ -22,6 +25,9 @@ public class UserDTO {
         this.passwd= passwd;
         this.full_name = full_name;
         this.tickets = tickets;
+        if (tickets==null){
+            this.tickets=new ArrayList<>();
+        }
 
     }
     public UserDTO(User user){

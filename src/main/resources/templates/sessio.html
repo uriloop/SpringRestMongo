@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/Css/mystyle.css">
+    <title>Sessio</title>
+</head>
+<body>
+
+    <h1 th:text="${sessio.pelicula}" />
+
+    <h2>Descripció:</h2>
+    <p>Aquí va la descripció de la pelicula corresponent</p>
+    <h3>Dia:</h3>
+    <p th:text="${sessio.dia}"></p>
+    <h3>Hora:</h3>
+    <p th:text="${sessio.hora}"></p>
+    <h3>Seients disponibles:</h3>
+    <table>
+        <tr>
+            <td>Seient</td>
+            <td>Preu</td>
+            <td>Compra!</td>
+        </tr>
+        <tr th:each="seient : ${sessio.tickets}">
+            <td th:text="${seient.seient}" />
+            <td> 0,00 €</td>
+            <td><a th:href="@{/pelicula/{id}(id=${seient.id})}" target="_self">Compra!</a></td>
+        </tr>
+    </table>
+
+
+</body>
+</html>

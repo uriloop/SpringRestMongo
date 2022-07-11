@@ -1,6 +1,7 @@
-package uri.dam.SpringRestMongo;
+package uri.dam.SpringRestMongo.DTOs;
 
 import lombok.Data;
+import uri.dam.SpringRestMongo.Models.Ticket;
 
 @Data
 public class TicketDTO {
